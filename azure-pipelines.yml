@@ -25,4 +25,5 @@ stages:
       inputs:
         command: build
         dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
-        tags: dotnet-image:1.1
+        repository: dotnet-image
+        tags: 1.1
