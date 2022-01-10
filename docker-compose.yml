@@ -1,0 +1,19 @@
+version: '3.7'
+services:
+  ms-sql-server:
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    restart: always
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "Super_Password_99"
+      MSSQL_PID: Express
+    ports:
+      - "1444:1433"
+
+  webapi:
+    restart: always
+    build: .
+    ports:
+      - "5000:80"
+    links:
+      - ms-sql-server
