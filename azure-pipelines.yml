@@ -25,7 +25,7 @@ stages:
         targetType: 'inline'
         script: |
           # Write your PowerShell commands here.
-          dotnet dev-certs https -ep ./https/weatherapi.pfx -p password
+          dotnet dev-certs https -ep ./https/weatherapi.pfx -p $(password_cert)
     - task: Docker@2
       displayName: Build an image
       inputs:
@@ -34,4 +34,4 @@ stages:
         repository: dotnet-image
         tags: |
          $(tag)
-        arguments: --build-arg PASSWORD_CERT=password --build-arg ENVIRONMENT=$(environment)
+        arguments: --build-arg PASSWORD_CERT=$(password_cert) --build-arg ENVIRONMENT=$(environment)
