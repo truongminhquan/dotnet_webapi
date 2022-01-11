@@ -28,3 +28,4 @@ stages:
         repository: dotnet-image
         tags: |
          $(tag)
+        arguments: --build-arg PASSWORD_CERT=password
