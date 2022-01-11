@@ -25,7 +25,7 @@ stages:
         targetType: 'inline'
         script: |
           # Write your PowerShell commands here.
-          echo "Hello World"
+          dotnet dev-certs https -ep ./https/weatherapi.pfx -p password
     # - task: Docker@2
     #   displayName: Build an image
     #   inputs:
