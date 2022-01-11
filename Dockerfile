@@ -15,5 +15,15 @@ WORKDIR /app
 EXPOSE 80
 COPY --from=build-env /app/out .
 
-ENV ASPNETCORE_ENVIRONMENT="Development"
+COPY ./https /https
+
+
+ARG ENVIRONMENT="Development"
+ARG PASSWORD_CERT
+
+ENV ASPNETCORE_ENVIRONMENT=$ENVIRONMENT
+ENV ASPNETCORE_URLS=https://+:443;http://+:80
+ENV ASPNETCORE_HTTPS_PORT=5001
+ENV ASPNETCORE_Kestrel__Certificates__Default__Password=$PASSWORD_CERT
+ENV ASPNETCORE_Kestrel__Certificates__Default__Path=/https/weatherapi.pfx
 ENTRYPOINT ["dotnet", "weatherapi.dll"]
