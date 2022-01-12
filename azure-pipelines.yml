@@ -17,8 +17,10 @@ stages:
   jobs:
   - job: Build
     displayName: Build
-    pool: 
-     name: 'dotnet-agent-pool'
+    # pool: 
+    #  name: 'dotnet-agent-pool'
+    pool:
+      vmImage: ubuntu-latest
     steps:
     - task: PowerShell@2
       inputs:
