@@ -7,13 +7,16 @@ services:
       ACCEPT_EULA: "Y"
       SA_PASSWORD: "Super_Password_99"
       MSSQL_PID: Express
-    ports:
-      - "1444:1433"
 
   webapi:
     restart: always
-    build: .
+    build:
+      context: .
+      args:
+        PASSWORD_CERT: password
+        ENVIRONMENT: Staging
     ports:
       - "5000:80"
+      - "5001:443"
     links:
       - ms-sql-server
