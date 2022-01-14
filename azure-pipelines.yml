@@ -20,6 +20,13 @@ stages:
     pool: 
      name: 'dotnet-agent-pool'
     steps:
+    
+    - task: PowerShell@2
+      inputs:
+        targetType: 'inline'
+        script: |
+          # Write your PowerShell commands here.
+          dotnet dev-certs https -ep ./https/weatherapi.pfx -p $(password_cert)
     - task: DockerCompose@0
       inputs:
         dockerComposeFile: '**/docker-compose.yml'
