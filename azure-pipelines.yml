@@ -30,11 +30,5 @@ stages:
     - task: DockerCompose@0
       inputs:
         dockerComposeFile: '**/docker-compose.yml'
-        action: Build services
+        action: docker-compose -d up
         
-        
-- task: DockerCompose@0
-  inputs:
-    containerregistrytype: 'Azure Container Registry'
-    dockerComposeFile: '**/docker-compose.yml'
-    action: docker-compose -d up
