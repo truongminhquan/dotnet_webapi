@@ -30,4 +30,5 @@ stages:
     - task: DockerCompose@0
       inputs:
         dockerComposeFile: '**/docker-compose.yml'
-        action: Run a Docker Compose command
+        action: 'Run a Docker Compose command'
+        dockerComposeCommand: 'up'
