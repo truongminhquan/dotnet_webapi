@@ -31,4 +31,4 @@ stages:
       inputs:
         dockerComposeFile: '**/docker-compose.yml'
         action: 'Run a Docker Compose command'
-        dockerComposeCommand: 'up -d'
+        dockerComposeCommand: 'down --rmi all'
