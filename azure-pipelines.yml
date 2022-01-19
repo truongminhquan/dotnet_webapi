@@ -3,14 +3,14 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/docker
 
 parameters:
-- name: docker-compose-command
+- name: dockerComposeCommand
   displayName: docker-compose command
   type: string
   default: up
   values:
   - up
   - down --rmi all
-  
+
 trigger:
 - docker-compose-branch
 
@@ -40,4 +40,4 @@ stages:
       inputs:
         dockerComposeFile: '**/docker-compose.yml'
         action: 'Run a Docker Compose command'
-        dockerComposeCommand: ${{ parameters.docker-compose-command }}
+        dockerComposeCommand: ${{ parameters.dockerComposeCommand }}
