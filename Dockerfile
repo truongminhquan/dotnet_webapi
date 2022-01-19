@@ -16,6 +16,8 @@ EXPOSE 80
 COPY --from=build-env /app/out .
 
 COPY ./https /https
+RUN apt update
+RUN apt install -y curl
 
 
 ARG ENVIRONMENT="Development"
