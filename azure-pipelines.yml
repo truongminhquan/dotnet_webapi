@@ -2,8 +2,17 @@
 # Build a Docker image
 # https://docs.microsoft.com/azure/devops/pipelines/languages/docker
 
+parameters:
+- name: dockerComposeCommand
+  displayName: docker-compose command
+  type: string
+  default: up -d
+  values:
+  - up -d
+  - down --rmi all
+
 trigger:
-- main
+- docker-compose-branch
 
 resources:
 - repo: self
@@ -20,11 +29,15 @@ stages:
     pool: 
      name: 'dotnet-agent-pool'
     steps:
-    - task: Docker@2
-      displayName: Build an image
+    
+    - task: PowerShell@2
       inputs:
-        command: build
-        dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
-        repository: dotnet-image
-        tags: |
-         $(tag)
+        targetType: 'inline'
+        script: |
+          # Write your PowerShell commands here.
+          dotnet dev-certs https -ep ./https/weatherapi.pfx -p $(password_cert)
+    - task: DockerCompose@0
+      inputs:
+        dockerComposeFile: '**/docker-compose.yml'
+        action: 'Run a Docker Compose command'
+        dockerComposeCommand: ${{ parameters.dockerComposeCommand }}
