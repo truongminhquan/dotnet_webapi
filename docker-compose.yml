@@ -11,6 +11,7 @@ services:
   webapi:
     restart: always
     container_name: ${_name}
+    image: webapi_image
     build:
       context: .
       args:
