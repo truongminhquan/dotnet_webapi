@@ -2,6 +2,14 @@
 # Build a Docker image
 # https://docs.microsoft.com/azure/devops/pipelines/languages/docker
 
+parameters:
+- name: docker-compose-command
+  displayName: docker-compose command
+  type: string
+  default: up
+  values:
+  - up
+  - down --rmi all
 trigger:
 - docker-compose-branch
 
