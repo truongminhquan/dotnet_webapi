@@ -10,6 +10,7 @@ parameters:
   values:
   - up
   - down --rmi all
+  
 trigger:
 - docker-compose-branch
 
@@ -39,4 +40,4 @@ stages:
       inputs:
         dockerComposeFile: '**/docker-compose.yml'
         action: 'Run a Docker Compose command'
-        dockerComposeCommand: 'down --rmi all'
+        dockerComposeCommand: ${{ parameters.docker-compose-command }}
