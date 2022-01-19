@@ -6,9 +6,9 @@ parameters:
 - name: dockerComposeCommand
   displayName: docker-compose command
   type: string
-  default: up
+  default: up -d
   values:
-  - up -d
+  - up -d'
   - down --rmi all
 
 trigger:
@@ -40,4 +40,4 @@ stages:
       inputs:
         dockerComposeFile: '**/docker-compose.yml'
         action: 'Run a Docker Compose command'
-        dockerComposeCommand: 'up -d'
+        dockerComposeCommand: ${{ parameters.dockerComposeCommand }}
