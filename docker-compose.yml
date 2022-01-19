@@ -10,6 +10,7 @@ services:
 
   webapi:
     restart: always
+    container_name: ${_name}
     build:
       context: .
       args:
