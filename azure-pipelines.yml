@@ -8,7 +8,7 @@ parameters:
   type: string
   default: up
   values:
-  - up -d
+  - 'up -d'
   - down --rmi all
 
 trigger:
