@@ -2,20 +2,21 @@ version: '3.7'
 services:
   ms-sql-server:
     image: mcr.microsoft.com/mssql/server:2017-latest
+    container_name: sql_server_container
     restart: always
     environment:
       ACCEPT_EULA: "Y"
-      SA_PASSWORD: "Super_Password_99"
+      SA_PASSWORD: ${sql_server_sa_pass}
       MSSQL_PID: Express
 
   webapi:
     restart: always
-    container_name: ${_name}
+    container_name: webapi_container
     image: webapi_image
     build:
       context: .
       args:
-        - PASSWORD_CERT=password
+        - PASSWORD_CERT=${password_cert}
         - ENVIRONMENT=${environment}
     ports:
       - "5000:80"
