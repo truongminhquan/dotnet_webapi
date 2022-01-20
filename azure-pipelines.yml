@@ -10,6 +10,15 @@ parameters:
     values:
       - up -d
       - down --rmi all
+      
+  - name: environment
+    displayName: environment
+    type: string
+    default: Development
+    values:
+      - Development
+      - Staging
+
 
 trigger:
   - docker-compose-branch
@@ -39,7 +48,7 @@ stages:
           - task: DockerCompose@0
             env:
               SQL_PASS: $(sql_server_sa_pass)
-              ENVIRONMENT: $(environment)
+              ENVIRONMENT: ${{ parameters.environment }}
               PASSWORD_CERT: $(password_cert)
             inputs:
               dockerComposeFile: "**/docker-compose.yml"
