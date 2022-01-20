@@ -10,13 +10,13 @@ services:
 
   webapi:
     restart: always
-    container_name: webapi_container
+    container_name: ${_name}
     image: webapi_image
     build:
       context: .
       args:
-        PASSWORD_CERT: ${password_cert}
-        ENVIRONMENT: ${environment}
+        PASSWORD_CERT: password
+        ENVIRONMENT: Staging
     ports:
       - "5000:80"
       - "5001:443"
