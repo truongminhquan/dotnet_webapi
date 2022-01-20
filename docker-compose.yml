@@ -16,7 +16,7 @@ services:
     build:
       context: .
       args:
-        - PASSWORD_CERT=${password_cert}
+        - PASSWORD_CERT=$(password_cert)
         - ENVIRONMENT=${environment}
     ports:
       - "5000:80"
