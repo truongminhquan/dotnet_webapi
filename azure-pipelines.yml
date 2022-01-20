@@ -39,6 +39,8 @@ stages:
           - task: DockerCompose@0
             env:
               SQL_PASS: $(sql_server_sa_pass)
+              ENVIRONMENT: $(environment)
+              PASSWORD_CERT: $(password_cert)
             inputs:
               dockerComposeFile: "**/docker-compose.yml"
               action: "Run a Docker Compose command"
