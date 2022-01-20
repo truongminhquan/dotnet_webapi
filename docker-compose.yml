@@ -12,7 +12,7 @@ services:
   webapi:
     restart: always
     container_name: webapi_container_${NAME_POSTFIX}
-    image: webapi_image_${NAME_POSTFIX}
+    image: webapi_image:${NAME_POSTFIX}
     build:
       context: .
       args:
