@@ -6,9 +6,9 @@ parameters:
   - name: dockerComposeCommand
     displayName: docker-compose command
     type: string
-    default: up -d --no-recreate
+    default: up -d
     values:
-      - up -d --no-recreate
+      - up -d
       - down --rmi all
 
   - name: environment
