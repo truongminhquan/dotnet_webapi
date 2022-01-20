@@ -27,13 +27,13 @@ namespace weatherapi
 
         public void ConfigureServices(IServiceCollection services)
         {
-            // Console.WriteLine(Configuration.GetConnectionString("WeatherForecastConnection"));
-            // services.AddDbContext<WeatherForecastContext>(opt => opt.UseSqlServer(
-            //     Configuration.GetConnectionString("WeatherForecastConnection")));
+            Console.WriteLine(Configuration.GetConnectionString("WeatherForecastConnection"));
+            services.AddDbContext<WeatherForecastContext>(opt => opt.UseSqlServer(
+                Configuration.GetConnectionString("WeatherForecastConnection")));
 
             services.AddControllers();
-            services.AddScoped<IWeatherForecastRepo, MockWeatherForecastRepo>();
-            // services.AddScoped<IWeatherForecastRepo, SqlWeatherForecastRepo>();
+            // services.AddScoped<IWeatherForecastRepo, MockWeatherForecastRepo>();
+            services.AddScoped<IWeatherForecastRepo, SqlWeatherForecastRepo>();
 
         }
 
@@ -46,7 +46,7 @@ namespace weatherapi
                 // app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "weatherapi v1"));
             }
 
-            app.UseHttpsRedirection();
+            // app.UseHttpsRedirection();
             app.UseRouting();
 
             app.UseAuthorization();
@@ -56,7 +56,7 @@ namespace weatherapi
                 endpoints.MapControllers();
             });
 
-            // PrepDB.PrepPopulation(app);
+            PrepDB.PrepPopulation(app);
         }
     }
 }

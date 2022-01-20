@@ -12,8 +12,8 @@ parameters:
       - down --rmi all
 
 trigger:
-  # - docker-compose-branch
-  - none
+  - docker-compose-branch
+  # - none
 
 resources:
   - repo: self
