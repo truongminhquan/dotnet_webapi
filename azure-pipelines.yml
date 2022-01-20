@@ -35,7 +35,13 @@ variables:
     ${{ if eq( parameters['environment'], 'Development') }}:
       value: 5000
     ${{ if eq( parameters['environment'], 'Staging' ) }}:
-      value: 4000   
+      value: 4000
+  
+  - name: https_port
+    ${{ if eq( parameters['environment'], 'Development') }}:
+      value: 5001
+    ${{ if eq( parameters['environment'], 'Staging' ) }}:
+      value: 4001   
   
 
 
@@ -61,6 +67,7 @@ stages:
               PASSWORD_CERT: $(password_cert)
               NAME_POSTFIX: ${{ lower(parameters.environment) }}
               HTTP_PORT: $(http_port)
+              HTTPS_PORT: $(https_port)
             inputs:
               dockerComposeFile: "**/docker-compose.yml"
               action: "Run a Docker Compose command"
