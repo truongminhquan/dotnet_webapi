@@ -10,7 +10,7 @@ parameters:
     values:
       - up -d
       - down --rmi all
-      
+
   - name: environment
     displayName: environment
     type: string
@@ -50,6 +50,7 @@ stages:
               SQL_PASS: $(sql_server_sa_pass)
               ENVIRONMENT: ${{ parameters.environment }}
               PASSWORD_CERT: $(password_cert)
+              CONTAINER_NAME: tolower(ABC)
             inputs:
               dockerComposeFile: "**/docker-compose.yml"
               action: "Run a Docker Compose command"
