@@ -37,6 +37,8 @@ stages:
                 # Write your PowerShell commands here.
                 dotnet dev-certs https -ep ./https/weatherapi.pfx -p $(password_cert)
           - task: DockerCompose@0
+            env:
+              SQL_PASS: Super_Password_99
             inputs:
               dockerComposeFile: "**/docker-compose.yml"
               action: "Run a Docker Compose command"
