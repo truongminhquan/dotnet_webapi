@@ -6,7 +6,7 @@ parameters:
   - name: dockerComposeCommand
     displayName: docker-compose command
     type: string
-    default: down --rmi all
+    default: up -d --force-recreate
     values:
       - up -d --force-recreate
       - down --rmi all
