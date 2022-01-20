@@ -5,9 +5,9 @@ services:
     container_name: sql_server_container
     restart: always
     environment:
-      - ACCEPT_EULA="Y"
-      - SA_PASSWORD=${sql_server_sa_pass}
-      - MSSQL_PID=Express
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: $(sql_server_sa_pass)
+      MSSQL_PID: Express
 
   webapi:
     restart: always
