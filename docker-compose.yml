@@ -11,8 +11,8 @@ services:
 
   webapi:
     restart: always
-    container_name: webapi_container
-    image: webapi_image
+    container_name: webapi_container_${ENVIRONMENT}
+    image: webapi_image_${ENVIRONMENT}
     build:
       context: .
       args:
