@@ -38,7 +38,7 @@ stages:
                 dotnet dev-certs https -ep ./https/weatherapi.pfx -p $(password_cert)
           - task: DockerCompose@0
             env:
-              SQL_PASS: Super_Password_99
+              SQL_PASS: $(sql_server_sa_pass)
             inputs:
               dockerComposeFile: "**/docker-compose.yml"
               action: "Run a Docker Compose command"
