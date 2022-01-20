@@ -24,6 +24,7 @@ ARG ENVIRONMENT="Development"
 ARG PASSWORD_CERT
 
 ENV ASPNETCORE_ENVIRONMENT=$ENVIRONMENT
+ENV ConnectionStrings__DefaultConnection="Server=ms-sql-server,1433;Initial Catalog=WeatherForecastDB_Stage;User ID=SA;Password=Super_Password_99;"
 ENV ASPNETCORE_URLS=https://+:443;http://+:80
 ENV ASPNETCORE_HTTPS_PORT=5001
 ENV ASPNETCORE_Kestrel__Certificates__Default__Password=$PASSWORD_CERT
