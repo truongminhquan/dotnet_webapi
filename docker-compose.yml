@@ -10,7 +10,7 @@ services:
 
   webapi:
     restart: always
-    container_name: ${_name}
+    container_name: webapi_container
     image: webapi_image
     build:
       context: .
