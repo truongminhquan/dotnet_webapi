@@ -50,7 +50,7 @@ stages:
               SQL_PASS: $(sql_server_sa_pass)
               ENVIRONMENT: ${{ parameters.environment }}
               PASSWORD_CERT: $(password_cert)
-              CONTAINER_NAME_POST_FIX: ${{ lower(parameters.environment) }}
+              NAME_POSTFIX: ${{ lower(parameters.environment) }}
             inputs:
               dockerComposeFile: "**/docker-compose.yml"
               action: "Run a Docker Compose command"
