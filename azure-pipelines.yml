@@ -28,7 +28,16 @@ resources:
   - repo: self
 
 variables:
-  tag: "$(Build.BuildId)"
+  - name: tag
+    value: "$(Build.BuildId)"
+
+  - name: http_port
+    ${{ if eq( parameters['environment'], 'Development') }}:
+      value: 5000
+    ${{ if eq( parameters['environment'], 'Staging' ) }}:
+      value: 4000   
+  
+
 
 stages:
   - stage: Build
@@ -51,6 +60,7 @@ stages:
               ENVIRONMENT: ${{ parameters.environment }}
               PASSWORD_CERT: $(password_cert)
               NAME_POSTFIX: ${{ lower(parameters.environment) }}
+              HTTP_PORT: $(http_port)
             inputs:
               dockerComposeFile: "**/docker-compose.yml"
               action: "Run a Docker Compose command"
