@@ -6,7 +6,7 @@ services:
     restart: always
     environment:
       ACCEPT_EULA: "Y"
-      SA_PASSWORD: ${sql_server_sa_pass}
+      SA_PASSWORD: ${SQL_PASS}
       MSSQL_PID: Express
 
   # webapi:
