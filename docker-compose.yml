@@ -6,20 +6,20 @@ services:
     restart: always
     environment:
       ACCEPT_EULA: "Y"
-      SA_PASSWORD: $$(sql_server_sa_pass)
+      SA_PASSWORD: "${sql_server_sa_pass}"
       MSSQL_PID: Express
 
-  webapi:
-    restart: always
-    container_name: webapi_container
-    image: webapi_image
-    build:
-      context: .
-      args:
-        PASSWORD_CERT: $$(password_cert)
-        ENVIRONMENT: $$(environment)
-    ports:
-      - "5000:80"
-      - "5001:443"
-    links:
-      - ms-sql-server
+  # webapi:
+  #   restart: always
+  #   container_name: webapi_container
+  #   image: webapi_image
+  #   build:
+  #     context: .
+  #     args:
+  #       PASSWORD_CERT: $$(password_cert)
+  #       ENVIRONMENT: $$(environment)
+  #   ports:
+  #     - "5000:80"
+  #     - "5001:443"
+  #   links:
+  #     - ms-sql-server
