@@ -2,7 +2,7 @@ version: '3.7'
 services:
   ms-sql-server:
     image: mcr.microsoft.com/mssql/server:2017-latest
-    container_name: sql_server_container
+    container_name: sql_server_container_development
     restart: always
     environment:
       ACCEPT_EULA: "Y"
@@ -11,16 +11,16 @@ services:
 
   webapi:
     restart: always
-    container_name: webapi_container_${NAME_POSTFIX}
-    image: webapi_image:${NAME_POSTFIX}
+    container_name: webapi_container_Development
+    image: webapi_image:Development
     build:
       context: .
       args:
         PASSWORD_CERT: ${PASSWORD_CERT}
-        ENVIRONMENT: ${ENVIRONMENT}
+        ENVIRONMENT: Development
         SQL_PASS: ${SQL_PASS}
     ports:
-      - "${HTTP_PORT}:80"
-      - "${HTTPS_PORT}:443"
+      - "5000:80"
+      - "5001:443"
     links:
       - ms-sql-server
