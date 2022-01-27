@@ -11,8 +11,8 @@ services:
 
   webapi_development:
     restart: always
-    container_name: webapi_container_${NAME_POSTFIX}
-    image: webapi_image:${NAME_POSTFIX}
+    container_name: webapi_container_development${TAG}
+    image: webapi_image_development:${TAG}
     build:
       context: .
       args:
