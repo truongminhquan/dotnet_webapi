@@ -41,3 +41,10 @@ msbuild.wrn
 
 # Terraform
 .terraform
+
+
+sample_localhost_conf.txt
+
+/out
+commands_note.txt
+/https
