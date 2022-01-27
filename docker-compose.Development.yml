@@ -9,7 +9,7 @@ services:
       SA_PASSWORD: ${SQL_PASS}
       MSSQL_PID: Express
 
-  webapi:
+  webapi_development:
     restart: always
     container_name: webapi_container_${NAME_POSTFIX}
     image: webapi_image:${NAME_POSTFIX}
