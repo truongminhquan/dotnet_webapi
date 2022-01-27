@@ -60,7 +60,7 @@ stages:
               script: |
                 # Write your PowerShell commands here.
                 dotnet dev-certs https -ep ./https/weatherapi.pfx -p $(password_cert)
-          - task: DockerCompose@0
+          - task: PowerShell@2
             env:
               SQL_PASS: $(sql_server_sa_pass)
               ENVIRONMENT: ${{ parameters.environment }}
@@ -69,6 +69,7 @@ stages:
               HTTP_PORT: $(http_port)
               HTTPS_PORT: $(https_port)
             inputs:
-              dockerComposeFile: "**/docker-compose.${{ parameters.environment }}.yml"
-              action: "Run a Docker Compose command"
-              dockerComposeCommand: ${{ parameters.dockerComposeCommand }}
+              targetType: "inline"
+              script: |
+                # Write your PowerShell commands here.
+                docker-compose -f docker-compose.${{ parameters.environment }}.yml ${{ parameters.dockerComposeCommand }}
