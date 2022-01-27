@@ -46,3 +46,4 @@ msbuild.wrn
 commands_note.txt
 sample_localhost_conf.txt
 /https
+/out
