@@ -72,4 +72,4 @@ stages:
               targetType: "inline"
               script: |
                 # Write your PowerShell commands here.
-                docker-compose -f docker-compose.${{ parameters.environment }}.yml ${{ parameters.dockerComposeCommand }}
+                docker-compose -f docker-compose.Development.yml -f docker-compose.Staging.yml ${{ parameters.dockerComposeCommand }}
