@@ -4,8 +4,6 @@ services:
     image: mcr.microsoft.com/mssql/server:2017-latest
     container_name: sql_server_container
     restart: always
-    networks:
-      - staging_network
     environment:
       ACCEPT_EULA: "Y"
       SA_PASSWORD: ${SQL_PASS}
@@ -13,8 +11,6 @@ services:
 
   webapi:
     restart: always
-    networks:
-      - staging_network
     container_name: webapi_container_${NAME_POSTFIX}
     image: webapi_image:${NAME_POSTFIX}
     build:
@@ -28,7 +24,3 @@ services:
       - "${HTTPS_PORT}:443"
     links:
       - ms-sql-server
-
-networks:
-  staging_network:
-    driver: bridge
