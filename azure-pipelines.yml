@@ -72,3 +72,15 @@ stages:
               dockerComposeFile: "**/docker-compose.${{ parameters.environment }}.yml"
               action: "Run a Docker Compose command"
               dockerComposeCommand: ${{ parameters.dockerComposeCommand }}
+
+          # - task: DockerCompose@0
+          #   env:
+          #     SQL_PASS: $(sql_server_sa_pass)
+          #     ENVIRONMENT: ${{ parameters.environment }}
+          #     PASSWORD_CERT: $(password_cert)
+          #     NAME_POSTFIX: ${{ lower(parameters.environment) }}
+          #     HTTP_PORT: $(http_port)
+          #     HTTPS_PORT: $(https_port)
+          #   inputs:
+          #     dockerComposeFile: '**/docker-compose.${{ parameters.environment }}.yml'
+          #     action: 'Build services'
