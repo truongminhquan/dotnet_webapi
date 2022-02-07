@@ -9,7 +9,7 @@ parameters:
     default: up -d
     values:
       - up -d
-      - down
+      - down --rmi all
 
   - name: environment
     displayName: environment
