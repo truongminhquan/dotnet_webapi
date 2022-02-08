@@ -32,6 +32,10 @@ namespace weatherapi
                 Configuration.GetConnectionString("WeatherForecastConnection")));
 
             services.AddControllers();
+
+            // Add cors
+            services.AddCors();
+
             // services.AddScoped<IWeatherForecastRepo, MockWeatherForecastRepo>();
             services.AddScoped<IWeatherForecastRepo, SqlWeatherForecastRepo>();
 
@@ -46,10 +50,16 @@ namespace weatherapi
                 // app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "weatherapi v1"));
             }
 
-            // app.UseHttpsRedirection();
+            app.UseHttpsRedirection();
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseCors(builder => builder
+            .AllowAnyHeader()
+            .AllowAnyOrigin()
+            .AllowAnyMethod());
+
 
             app.UseEndpoints(endpoints =>
             {
