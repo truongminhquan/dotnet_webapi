@@ -15,6 +15,7 @@ services:
     image: webapi_image_development:${TAG}
     build:
       context: .
+      dockerfile: Dockerfile-backend
       args:
         PASSWORD_CERT: ${PASSWORD_CERT}
         ENVIRONMENT: ${ENVIRONMENT}
@@ -24,3 +25,16 @@ services:
       - "${HTTPS_PORT}:443"
     links:
       - ms-sql-server
+
+    webui_development:
+      restart: always
+      container_name: webui_container_development${TAG}
+      image: webui_image_development:${TAG}
+      build:
+        context: .
+        dockerfile: Dockerfile-backend
+
+      ports:
+        - "80:80"
+      links:
+        - webapi_development

@@ -1,2 +1,11 @@
+# Backend
 bin/
 obj/
+out/
+https/
+.vscode/
+
+
+# Front end
+weather-ui/dist
+weather-ui/node_modules

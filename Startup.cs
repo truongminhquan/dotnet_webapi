@@ -28,7 +28,7 @@ namespace weatherapi
         public void ConfigureServices(IServiceCollection services)
         {
             Console.WriteLine(Configuration.GetConnectionString("WeatherForecastConnection"));
-            services.AddDbContext<WeatherForecastContext>(opt => opt.UseSqlServer(
+            services.AddDbContext<WeatherForecastContext>(opt => opt.UseNpgsql(
                 Configuration.GetConnectionString("WeatherForecastConnection")));
 
             services.AddControllers();
